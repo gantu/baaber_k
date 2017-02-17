@@ -9,7 +9,7 @@ export default React.createClass({
     return (
 
       <header className="main-header">
-        <div className="navbar navbar-inverse navbar-fixed-top">
+        <div className="navbar navbar-default navbar-fixed-top">
 
           <div className="container">
 

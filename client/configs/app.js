@@ -1,5 +1,5 @@
 export default {
 
-  name: 'ToiPoi.kg'
+  name: 'BaaBer.kg'
 
 }

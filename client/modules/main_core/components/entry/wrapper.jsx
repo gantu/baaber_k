@@ -20,23 +20,7 @@ export default class extends React.Component {
                 <p><a href="#"><span className="glyphicon glyphicon-calendar" aria-hidden="true"></span> Conferences</a></p>
                 <p><a href="#"><span className="glyphicon glyphicon-glass" aria-hidden="true"></span> Parties</a></p>
                
-              
             </div>
-            
-          
-        </div>
-        <div className="row">
-          <div className="col-md-3">
-            
-            <CategoriesContainer />
-          </div>
-          <div className="col-md-6">
-            Entry Component
-          </div>
-          <div className="col-md-3">
-            <h3>Витрина</h3>
-            <VitrinaContainer />
-          </div>
         </div>
       </div>
     );

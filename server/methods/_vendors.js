@@ -59,7 +59,10 @@ export default function () {
           var user = {email:email,password:password,roles:['manager']};
           let id=Accounts.createUser({
             email:email,
-            password:password
+            password:password,
+            profile:{
+              name: invited.companyName
+            }
           });
 
           if (user.roles.length > 0) {
