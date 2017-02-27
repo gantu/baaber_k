@@ -1,34 +1,29 @@
 import {useDeps} from 'react-simple-di';
 import {composeWithTracker, composeAll} from 'react-komposer';
 
-const VendorSubs = new SubsManager();
-const ImagesSubs = new SubsManager();
-
-export const fillDataComposer = ({context,permission_denied}, onData) => {
+export const composer = ({context, clearErrors,permission_denied}, onData) => {
   const {Meteor, Collections, LocalState} = context();
+  const error = LocalState.get('SURVEY_ERROR');
   const loggedIn = Meteor.user();
   let role = Roles.userIsInRole(loggedIn, ['manager'],'manager-group');
   if(!role){
     permission_denied();
     //Bert.alert('You do not have permission!','danger');
   }else{
-    if (VendorSubs.subscribe('_vendors.profileSingle', loggedIn._id).ready()) {
-        const record = Collections.vendors.findOne({owner:loggedIn._id});
-        if (record) {
-          onData(null, {record});
-        }else{
-          onData();
-        }
-    }
+    onData(null, {error});
   }
+  // clearErrors when unmounting the component
+  return clearErrors;
 };
 
 export const depsMapper = (context, actions) => ({
-  permission_denied: actions._vendors.permissionDenied,
+  submitAction: actions._survey.create,
+  clearErrors: actions._survey.clearErrors,
+  permission_denied: actions._survey.permissionDenied,
   context: () => context
 });
 
 export default (component) => composeAll(
-    composeWithTracker(fillDataComposer),
+    composeWithTracker(composer),
     useDeps(depsMapper)
   )(component);

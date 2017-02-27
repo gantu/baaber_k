@@ -4,6 +4,7 @@ import NavHeader from './NavHeader.jsx';
 import NavLeftContent from './NavLeftContent.jsx';
 import NavRightContent from './NavRightContent.jsx';
 import Footer from './Footer.jsx';
+import SideBar from './SideBar.jsx';
 
 import AppConfig from '/client/configs/app.js';
 
@@ -17,8 +18,9 @@ export default class extends React.Component {
           brand={()=> (AppConfig.name) }
           leftContent={()=> (<NavLeftContent />) }
           rightContent={()=> (<NavRightContent />) }
-        />
+        /> 
 
+        
         <div className="container">
 
             {this.props.content()}

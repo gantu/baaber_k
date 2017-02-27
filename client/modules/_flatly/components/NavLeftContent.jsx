@@ -32,7 +32,10 @@ export default () => {
 
   var links7=[];
   links7.push({url: '/vendors/profile', name: 'Profile'} );
+  links7.push({url:'/survey', name: 'Surveys'});
   let navManagers = React.createElement(DropDown,{name:'Managers',links:links7});
+
+
   /*
   { navColors }
   { navAccounts }
@@ -45,6 +48,7 @@ export default () => {
       { Roles.userIsInRole(Meteor.user(), ['admin'],'default-group') ? navAdmin : null }
       { Roles.userIsInRole(Meteor.user(), ['manager'],'manager-group') ? <li><a href="/vendors/profile"><span className="glyphicon glyphicon-cog" aria-hidden="true"></span>Профиль</a></li> : null }
       { Roles.userIsInRole(Meteor.user(), ['manager'],'manager-group') ? <li><a href="/price_request/list">Сообшения <span className="badge">42</span></a></li> : null }
+      { Roles.userIsInRole(Meteor.user(), ['manager'],'manager-group') ? navManagers : null }
 
     </ul>
   );

@@ -15,6 +15,8 @@ import communicateModule from './modules/communicate';
 
 import _partiesModule from './modules/_parties';
 
+import _surveyModule from './modules/_survey';
+
 // init context
 const context = initContext();
 
@@ -27,6 +29,7 @@ app.loadModule(coreModule);
 app.loadModule(commentsModule);
 app.loadModule(_usersModule);
 app.loadModule(_partiesModule);
+app.loadModule(_surveyModule);
 //app.loadModule(_colorsModule);
 
 
