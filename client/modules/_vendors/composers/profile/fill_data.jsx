@@ -13,7 +13,7 @@ export const fillDataComposer = ({context,permission_denied}, onData) => {
     //Bert.alert('You do not have permission!','danger');
   }else{
     if (VendorSubs.subscribe('_vendors.profileSingle', loggedIn._id).ready()) {
-        const record = Collections.vendors.findOne({owner:loggedIn._id});
+        const record = Collections.vendors.findOne({"owner.id":loggedIn._id});
         if (record) {
           onData(null, {record});
         }else{

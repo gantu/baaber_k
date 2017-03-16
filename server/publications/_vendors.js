@@ -40,7 +40,7 @@ export default function (){
     check(_id,String);
     let role = Roles.userIsInRole(this.userId,['manager'],'manager-group');
     if(role){
-      const response = vendors.find({owner:_id});
+      const response = vendors.find({"owner.id":_id});
       return response;
     }else{
       this.stop();

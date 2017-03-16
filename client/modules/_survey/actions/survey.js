@@ -16,6 +16,19 @@ export default {
      });
      FlowRouter.go(`/post/${id}`);
    },
+    
+    saveSurvey({Meteor,LocalState},data){
+        Meteor.call('_surveys.addSurvey', data,Meteor.userId(), (err) => {
+            
+            if (err) {
+                Bert.alert('Very sorry can not add survey','danger');
+                //return LocalState.set('_surveys.ACTION_SURVEY_ERROR', err.message);
+            }else{
+                Bert.alert('Sucessfully saved!','success');
+            }
+
+        });
+    },
 
    clearErrors({LocalState}) {
      return LocalState.set('SAVING_ERROR', null);

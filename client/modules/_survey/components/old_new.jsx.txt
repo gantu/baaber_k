@@ -1,0 +1,54 @@
+import React from 'react';
+import RestaurantTemplate from './restaurantTemp.jsx';
+
+export default React.createClass({
+
+
+	getInitialState(){
+		return {
+			surveyStatus:"on",
+			buttonStyle:"btn btn-success",
+			surveyStatusButtonText:"Включить"
+		};
+	},
+	handleStatusChange(event){
+		event.preventDefault();
+		if(this.state.surveyStatus==="off"){
+			this.setState({surveyStatus:"on",surveyStatusButtonText:"Включить",buttonStyle:"btn btn-success"});
+
+		}
+		else if(this.state.surveyStatus==="on"){
+			this.setState({surveyStatus:"off",surveyStatusButtonText:"Выключить",buttonStyle:"btn btn-danger"});
+		}
+	},
+	moveSteps(){
+
+	},
+
+	render(){
+		return(
+			<div className="panel panel-default">
+				<div className="panel-heading">
+					<nav aria-label="...">
+  						<ul className="pager">
+    						<li><a href="#">Step 1</a></li>
+    						<li><a href="#">Step 2</a></li>
+    						<li><a href="#">Step 3</a></li>
+  						</ul>
+					</nav>
+				</div>
+				<div className="panel-body">
+					<RestaurantTemplate />
+				</div>
+				<div className="panel-footer">
+					<div className="btn-group">
+						
+						<button className="btn btn-primary">Сохранить</button>
+						<button className={this.state.buttonStyle} onClick={this.handleStatusChange}>{this.state.surveyStatusButtonText}</button>
+					</div>
+					
+				</div>
+			</div>
+		);
+	}
+});

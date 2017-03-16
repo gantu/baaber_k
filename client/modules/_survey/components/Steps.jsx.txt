@@ -1,0 +1,28 @@
+import React from 'react';
+import Step from './Step.jsx'
+
+export default React.createClass({
+
+	handleClick(step){
+		this.props.moveSteps(step);
+	},
+	render(){
+		return (
+			<nav aria-label="...">
+  						<ul className="pager">
+  							{this.props.stepList.map(function(step,index){
+  								return(
+  									<Step handleClick={this.handleClick.bind(this,index)}
+  										  key={step.id}
+  										  id={step.id}
+  										  url={step.url}
+  										  name={step.name}
+  										  isCurrent={(this.props.currentStep === index)}
+  									/>
+  								);
+  							}.bind(this))}
+  						</ul>
+			</nav>
+		);
+	}
+});

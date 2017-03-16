@@ -13,7 +13,7 @@ export const profileDataComposer = ({context, clearErrors, permission_denied}, o
     Bert.alert('You do not have permission!','danger');
   }else{
     if (VendorSubs.subscribe('_vendors.profileSingle', loggedIn._id).ready()) {
-        const record = Collections.vendors.findOne({owner:loggedIn._id});
+        const record = Collections.vendors.findOne({"owner.id":loggedIn._id});
         //ImagesSubs.subscribe('_vendors.images',record._id);
         if (record) {
           //var images = Collections.Images.find({"owner":record._id});

@@ -3,6 +3,7 @@ import _users from './_users';
 import _colors from './_colors';
 import _vendors from './_vendors';
 import _communicate from './communicate';
+import _surveys from './_surveys';
 
 export default function () {
   posts();
@@ -10,4 +11,5 @@ export default function () {
   _colors();
   _vendors();
   _communicate();
+  _surveys();
 }

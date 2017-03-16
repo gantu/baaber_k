@@ -73,7 +73,7 @@ export default function () {
           v.email = invited.email;
           v.phone = invited.phone;
           v.companyType = invited.companyType;
-          v.owner = id;
+          v.owner.push({id:id});
 
           if(invited.companyType === "Рестораны"){
             var r=new Restaurant();
@@ -108,10 +108,14 @@ export default function () {
       check(_id,String);
 
       const vendor = Vendor.findOne(_id);
-  
+      function getByValue(arr, value) {
 
-
-      if(vendor.owner === this.userId){
+      for (var i=0, iLen=arr.length; i<iLen; i++) {
+            if (arr[i].id == value) return arr[i];
+        }
+      }
+      const oneOfOwners = getByValue(vendor.owner,this.userId);
+      if(oneOfOwners){
         vendor.companyName = data.companyName;
         vendor.companyDescription = data.companyDescription;
         vendor.address = data.address;

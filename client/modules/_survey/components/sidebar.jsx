@@ -12,8 +12,8 @@ export default class extends React.Component {
               </div>
               <div className="box-body no-padding">
                 <ul className="nav nav-pills nav-stacked">
-                  <li><a className="btn fa" role="button" onClick={() => this.props.handleClick("list")}>Все опросы</a></li>
-                  <li><a className="btn fa" role="button" onClick={() => this.props.handleClick("new")}>New Survey</a></li>
+                  <li><a href="/survey"><i className="fa "></i>Все опросы</a></li>
+                  <li><a href="/survey/new"><i className="fa "></i>Создать опрос</a></li>
                 </ul>
               </div>
             </div>

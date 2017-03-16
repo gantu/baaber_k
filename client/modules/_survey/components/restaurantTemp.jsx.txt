@@ -1,0 +1,251 @@
+import React from 'react';
+import Formsy from 'formsy-react';
+
+import {
+  // Checkbox,
+  // CheckboxGroup,
+  Input,
+  RadioGroup,
+  Row,
+  Select,
+  // File,
+  Textarea
+
+} from 'formsy-react-components';
+
+
+export default React.createClass({
+
+  resetForm() {
+    // console.log('resetForm');
+    this.refs.form.reset();
+  },
+
+  validSubmit(data) {
+   // this.props.saveProfileInfo(data, this.props.record._id);
+  },
+  // invalidSubmit() {
+  invalidSubmit() {
+    // console.log('invalidSubmit', data);
+  },
+
+  enableButton() {
+    // console.log('enable button');
+    this.setState({ canSubmit: true });
+  },
+
+  disableButton() {
+    // console.log('disable button');
+    this.setState({ canSubmit: false });
+  },
+
+  getInitialState() {
+    return {
+      layout: 'vertical',
+      validatePristine: true,
+      disabled: false,
+      canSubmit: false
+    };
+  },
+
+    render(){
+
+      let formClassName = 'vertical m-t';
+
+      var sharedProps = {
+        layout: this.state.layout,
+        validatePristine: this.state.validatePristine,
+        disabled: this.state.disabled
+      };
+
+      var citySelectOptions = [
+
+        {label:"Бишкек",value:"bishkek"},
+        {label:"Oш",value:"osh"},
+        {label:"Tалас",value:"talas"},
+        {label:"Чолпоната",value:"cholponata"},
+        {label:"НарынНарын",value:"naryn"},
+        {label:"Каракол",value:"karakol"}
+        ];
+
+      var yesNoSelectOptions = [
+
+
+        {label:"Да",value:"yes"},
+        {label:"Нет",value:"no"}
+      ];
+
+
+      var rateRadioOptions =[
+      	{label:"1", value:"1"},
+      	{label:"2", value:"2"},
+      	{label:"3", value:"3"},
+      	{label:"4", value:"4"},
+      	{label:"5", value:"5"},
+      ]; 
+
+      var visitFreRadioOptions=[
+      	{label:"Ежедневно",value:"daily"},
+      	{label:"Еженедельно",value:"weekly"},
+      	{label:"Ежемесячно",value:"monthly"},
+      	{label:"Раз в три месяца",value:"once_in_three_months"},
+      	{label:"Первый раз",value:"first_time"}
+      ];
+
+      const {record,error,status} = this.props;
+
+        return(
+          <Formsy.Form className={formClassName}
+            onValidSubmit={this.validSubmit}
+            onInvalidSubmit={this.invalidSubmit}
+            onValid={this.enableButton}
+            onInvalid={this.disableButton}
+            onChange={this.onChange}
+            ref="form">
+
+            <fieldset>
+              {error ?
+              <div className="alert alert-danger" onClick="">
+                <span className="octicon octicon-megaphone" ></span>
+                {error}
+              </div> : null }
+
+              {status ?
+              <div className="alert alert-info" onClick="">
+                <span className="octicon octicon-megaphone" ></span>
+                {status}
+              </div> : null }
+
+            	<RadioGroup
+                    name="visitFrequency"
+                    value="daily"
+                    label="Как часто вы у нас обедаете/ ужинаете? "
+                    options={visitFreRadioOptions}
+			 	/>
+			 	</fieldset>
+			 	<fieldset>
+			  <legend>Обслуживающий персонал</legend>
+
+			  <RadioGroup
+                    name="availability"
+                    label="Was the server attentive and available when you needed him/her"
+                    value="yes"
+                    options={yesNoSelectOptions}
+                    
+			   />
+
+			 <RadioGroup
+                    name="knowledge"
+                    label="Was your server knowledgeable and able to answer your
+questions about the food and beverages?"
+                    value="yes"
+                    options={yesNoSelectOptions}
+                    
+			   />	
+			   </fieldset>
+			   <fieldset>
+
+			    <legend>Еда и Напитки</legend>	   
+
+			    <RadioGroup
+			    	type="inline"
+                    name="rateFoodTaste"
+                    label="Как бы вы оценили вкус вашей еды?"
+                    value="5"
+                    options={rateRadioOptions}
+                    
+			   />
+			   <RadioGroup
+			    	type="inline"
+                    name="rateFoodTemp"
+                    label="How was the temperature of the food?"
+                    value="5"
+                    options={rateRadioOptions}
+                    
+			   />
+
+           </fieldset>
+
+           <fieldset>
+           <legend> Атмосфера </legend>
+
+
+
+
+
+           <RadioGroup
+			    	type="inline"
+                    name="rateCleanless"
+                    label="Чистота"
+                    value="5"
+                    options={rateRadioOptions}
+                    
+			   />
+			   <RadioGroup
+			    	type="inline"
+                    name="rateLightning"
+                    label="Освещение"
+                    value="5"
+                    options={rateRadioOptions}
+                    
+			   />
+			   <RadioGroup
+			    	type="inline"
+                    name="rateMusic"
+                    label="Музыка"
+                    value="5"
+                    options={rateRadioOptions}
+                    
+			   />
+			   <RadioGroup
+			    	type="inline"
+                    name="rateComfort"
+                    label="Комфорт"
+                    value="5"
+                    options={rateRadioOptions}
+                    
+			   />
+           </fieldset>
+
+           <fieldset>
+           	
+           	<legend>Замечание</legend>
+           	<Textarea
+                    rows={3}
+                    cols={40}
+                    name="comments"
+                    label="Замечание"
+                    placeholder="Если у вас есть предложения или замечания, пожалуйста, напишите здесь."
+                    
+			/>	
+
+			<Input
+                    name="email"
+                    value=""
+                    label="Email"
+                    type="email"
+                    autoComplete="off"
+                    placeholder="This is an email input."
+                    help="This email field should not autocomplete."
+                    validations="isEmail"
+                    validationErrors={{
+                        isEmail: 'This doesn’t look like a valid email address.'
+                    }}
+                    required
+			/>
+           </fieldset>
+
+            <Row layout={this.state.layout}>
+
+              <input className="btn btn-primary block full-width m-b"
+                formNoValidate={true}
+                disabled={!this.state.canSubmit}
+                type="submit"
+                defaultValue="Готово" />
+
+            </Row>
+
+          </Formsy.Form>
+        );
+    }
+});
