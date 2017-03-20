@@ -12,7 +12,7 @@ export default class extends React.Component {
               </div>
               <div className="box-body no-padding">
                 <ul className="nav nav-pills nav-stacked">
-                  <li><a href="/survey"><i className="fa "></i>Все опросы</a></li>
+                  <li><a href="/survey/list"><i className="fa "></i>Все опросы</a></li>
                   <li><a href="/survey/new"><i className="fa "></i>Создать опрос</a></li>
                 </ul>
               </div>

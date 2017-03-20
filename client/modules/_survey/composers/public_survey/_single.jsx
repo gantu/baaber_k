@@ -1,28 +1,25 @@
 import {useDeps} from 'react-simple-di';
 import {composeWithTracker, composeAll} from 'react-komposer';
 
-export const composer = ({context, clearErrors,permission_denied}, onData) => {
+
+export const composer = ({context, clearErrors,permission_denied,_id}, onData) => {
   const {Meteor, Collections, LocalState} = context();
   const error = LocalState.get('SURVEY_ERROR');
-  const loggedIn = Meteor.user();
   
-  if(Roles.userIsInRole(loggedIn, ['manager'],'manager-group') || Roles.userIsInRole(loggedIn, ['operator'],'operator-group')){
-    if (Meteor.subscribe('_surveys.collectionByVendor',loggedIn._id).ready()) {
-      const collection = Collections.surveys.find().fetch();
-      onData(null, {collection});
+  
+    if (Meteor.subscribe('_surveys.publicSingle',_id).ready()) {
+    
+      const record = Collections.surveys.findOne({_id:_id});
+      onData(null, {record});
     }     
     //Bert.alert('You do not have permission!','danger');
-  }else{
-     permission_denied();
-  }
+ 
   return clearErrors;
 };
 
 export const depsMapper = (context, actions) => ({
   clearErrors: actions._survey.clearErrors,
-  deleteSurvey: actions._survey.deleteSurvey,
-  publishSurvey: actions._survey.publishSurvey,
-  unPublishSurvey: actions._survey.unPublishSurvey,
+  saveSurvey: actions._survey.saveAnswer,
   permission_denied: actions._survey.permissionDenied,
   context: () => context
 });

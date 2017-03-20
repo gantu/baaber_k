@@ -12,13 +12,13 @@ export default React.createClass( {
   },
     
   render() {
-       
+      const {record}=this.props;
       return (      
         <div className="bs-docs-section clearfix">
           <div className="row">
             <Sidebar handleClick={this.handleClick} />
             <div className="col-md-9">
-              <Editor editing={true} surveyCallback = {this.saveSurvey} survey={this.props.record}/>
+              <Editor editing={true} surveyCallback = {this.saveSurvey} survey={record}/>
             </div>
           </div>
         </div>

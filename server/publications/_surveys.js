@@ -21,4 +21,19 @@ export default function (){
         const survey = Survey.find({_id:_id});
         return survey;
     });
+    
+    Meteor.publish('_surveys.publicCollectionByVendor',function(_id){
+        check(_id,String);
+        
+        return Survey.find({author:_id,isPublished:true});
+      
+    });
+    
+    Meteor.publish('_surveys.publicSingle',function(_id){
+        check(_id,String);
+        
+        return Survey.find({_id:_id});
+      
+    });
+    
 }

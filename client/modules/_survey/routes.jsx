@@ -1,28 +1,35 @@
 import React from 'react';
 import {mount} from 'react-mounter';
 
-import NewSurvey from './components/new.jsx';
-import newSurveyComposer from './composers/_new.jsx';
-
-import EditSurvey from './components/edit_survey.jsx';
 import editSurveyComposer from './composers/_single.jsx';
+import newSurveyComposer from './composers/_new.jsx';
+import publicSurveyListComposer from './composers/public_survey/_collections.jsx';
+import publicSurveySingle from './composers/public_survey/_single.jsx';
+
+import NewSurvey from './components/new.jsx';
+import EditSurvey from './components/edit_survey.jsx';
+import Surveys from './components/list.jsx'
+import PublicSurveyList from './components/public_survey/_list.jsx';
+import PublicSurvey from './components/public_survey/_single.jsx';
+
 
 const NewView = newSurveyComposer(NewSurvey);
 const EditView = editSurveyComposer(EditSurvey);
+const PublicSurveyListView = publicSurveyListComposer(PublicSurveyList);
+const PublicSurveyView = publicSurveySingle(PublicSurvey);
 
 import {
   LayoutDefault,
+  LayoutSurvey,
   Simple
 } from '/client/configs/theme.jsx';
-
-import Surveys from './components/list.jsx'
-
 
 export default function (injectDeps, {FlowRouter}) {
 
   const LayoutDefaultCtx = injectDeps(LayoutDefault);
+  const LayoutSurveyCtx = injectDeps(LayoutSurvey);
 
-  FlowRouter.route('/survey', {
+  FlowRouter.route('/survey/list', {
     name: 'left',
     action() {
       if (!Meteor.userId()) {
@@ -48,6 +55,24 @@ FlowRouter.route('/survey/new', {
     action() {
       mount(LayoutDefaultCtx, {
         content: () => (<NewView />)
+      });
+    }
+  });
+    
+FlowRouter.route('/survey/public/list/:_id', {
+    name: 'left',
+    action({_id}) {
+      mount(LayoutSurveyCtx, {
+        content: () => (<PublicSurveyListView _id={_id} />),
+      });
+    }
+  });
+    
+FlowRouter.route('/survey/public/:_id', {
+    name: 'left',
+    action({_id}) {
+      mount(LayoutSurveyCtx, {
+        content: () => (<PublicSurveyView _id={_id} />),
       });
     }
   });

@@ -32,7 +32,7 @@ export default () => {
 
   var links7=[];
   links7.push({url: '/vendors/profile', name: 'Profile'} );
-  links7.push({url:'/survey', name: 'Surveys'});
+  links7.push({url:'/survey/list', name: 'Surveys'});
   let navManagers = React.createElement(DropDown,{name:'Managers',links:links7});
 
 

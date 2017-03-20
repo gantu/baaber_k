@@ -17,10 +17,13 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      id: null,
-      name: null,
-      description: null,
+      _id: "",
+      name: "",
+      description: "",
       author: null,
+      createdAt: new Date(),
+      lastModified: new Date(),
+      isPublished:false,
       questions: [],
       answers: []
     }
@@ -36,7 +39,7 @@ export default React.createClass({
       }
       else {
         this.setState({
-          id: UUID.v4()
+          _id: UUID.v4()
         });
       }
     }
@@ -114,17 +117,21 @@ export default React.createClass({
   submit() {
     if (this.props.surveyCallback) {
       this.props.surveyCallback({
-        id: this.state.id,
+        _id: this.state._id,
         name: this.state.name,
         description: this.state.description,
         author: this.state.author,
+        createdAt: this.state.createdAt,
+        lastModified: this.state.lastModified,
+        isPublished: this.state.isPublished,
         questions: this.state.questions
+        
       });
     }
 
     if (this.props.answersCallback) {
       this.props.answersCallback({
-        id: this.state.id,
+        _id: this.state._id,
         answers: this.state.answers
       });
     }
@@ -153,7 +160,7 @@ export default React.createClass({
         <div>
           <h2>{this.state.name}</h2>
           <h3>{this.state.description}</h3>
-          <h4>{this.state.author}</h4>
+          
           <hr />
           {questions}
           <br />

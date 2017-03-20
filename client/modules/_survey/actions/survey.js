@@ -1,23 +1,5 @@
 export default {
-   create({Meteor, LocalState, FlowRouter}, title, content) {
-     if (!title || !content) {
-       return LocalState.set('SAVING_ERROR', 'Title & Content are required!');
-     }
-
-     LocalState.set('SAVING_ERROR', null);
-
-     const id = Meteor.uuid();
-     // There is a method stub for this in the config/method_stubs
-     // That's how we are doing latency compensation
-     Meteor.call('posts.create', id, title, content, (err) => {
-       if (err) {
-         return LocalState.set('SAVING_ERROR', err.message);
-       }
-     });
-     FlowRouter.go(`/post/${id}`);
-   },
-    
-    saveSurvey({Meteor,LocalState},data){
+    addSurvey({Meteor,LocalState, FlowRouter},data){
         Meteor.call('_surveys.addSurvey', data,Meteor.userId(), (err) => {
             
             if (err) {
@@ -25,10 +7,51 @@ export default {
                 //return LocalState.set('_surveys.ACTION_SURVEY_ERROR', err.message);
             }else{
                 Bert.alert('Sucessfully saved!','success');
+                FlowRouter.go('/survey/list');
             }
 
         });
     },
+    saveSurvey({Meteor,LocalState,FlowRouter},data){
+        Meteor.call('_surveys.saveSurvey',data,Meteor.userId(),(err)=>{
+            if(err){
+                Bert.alert('Sorry can not save survey','danger');
+            }else{
+                Bert.alert('Successfully eited and saved!','success');
+                FlowRouter.go('/survey/list');
+            }
+        });
+    },
+    deleteSurvey({Meteor, LocalState,FlowRouter},_id){
+        Meteor.call('_surveys.deleteSurvey',_id,Meteor.userId(),(err)=>{
+            if(err){
+                 Bert.alert('Sorry can not save survey','danger');
+            }else{
+                 Bert.alert('Successfully Deleted!','success');
+            }
+        });
+    },
+    
+    publishSurvey({Meteor,LocalState, FlowRouter},_id){
+        Meteor.call('_surveys.publishSurvey',_id,Meteor.userId(),(err)=>{
+            console.log(_id);
+            if(err){
+                 Bert.alert('Cannot publish survey','danger');
+            }else{
+                 Bert.alert('Survey published!','success');
+            }
+        });
+    },
+     unPublishSurvey({Meteor,LocalState, FlowRouter},_id){
+        Meteor.call('_surveys.unPublishSurvey',_id,Meteor.userId(),(err)=>{
+            if(err){
+                 Bert.alert('Cannot publish survey','danger');
+            }else{
+                 Bert.alert('Survey published!','success');
+            }
+        });
+    },
+    
 
    clearErrors({LocalState}) {
      return LocalState.set('SAVING_ERROR', null);
