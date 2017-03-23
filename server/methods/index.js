@@ -4,6 +4,7 @@ import _colors from './_colors';
 import _vendors from './_vendors';
 import _communicate from './communicate';
 import _surveys from './_surveys';
+import _answers from './_answers';
 
 export default function () {
   posts();
@@ -12,4 +13,5 @@ export default function () {
   _vendors();
   _communicate();
   _surveys();
+  _answers();
 }

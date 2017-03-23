@@ -19,7 +19,7 @@ export const composer = ({context, clearErrors,permission_denied,_id}, onData) =
 
 export const depsMapper = (context, actions) => ({
   clearErrors: actions._survey.clearErrors,
-  saveSurvey: actions._survey.saveAnswer,
+  saveSurveyAnswers: actions._survey.saveSurveyAnswers,
   permission_denied: actions._survey.permissionDenied,
   context: () => context
 });

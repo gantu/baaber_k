@@ -2,6 +2,8 @@ import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import Survey from '/lib/surveys';
 import Vendor  from '/lib/vendors';
+import Answer from '/lib/answers';
+import {answers} from '/lib/collections';
 
 
 export default function(){
@@ -95,6 +97,34 @@ export default function(){
                 survey.isPublished=false;
                 survey.save();
             }
+        },
+        '_surveys.saveAnswers'(data){
+            console.log(data);
+            const pattern1 = {
+              answer:String,
+              question:String
+            };
+            const pattern2 = {
+                answer:[Object],
+                question:String
+            }
+            
+            check(data,{
+                survey_id:String,
+                answers:[Match.Any]
+            });
+            
+            /*var answer = new Answer();
+            answer.survey_id = data._id;
+            answer.answers = data.answers;
+            answer.save();
+            */
+            
+            answers.insert(data);
+            
+            var survey = Survey.findOne(data.survey_id);
+            survey.answerCount++;
+            survey.save();
         },
         
         

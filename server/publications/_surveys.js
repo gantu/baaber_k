@@ -1,15 +1,17 @@
-import {surveys,vendors} from '/lib/collections';
+import {answers,surveys,vendors} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import Survey from '/lib/surveys';
 import Vendor from '/lib/vendors';
+import Answer from '/lib/answers';
 
 export default function (){
     Meteor.publish('_surveys.collectionByVendor',function(userId){
         check(userId,String);
         const vendor = Vendor.findOne({"owner.id":userId});
         if(vendor && (this.userId === userId)){
-            return Survey.find({author:vendor._id});
+            var surs = Survey.find({author:vendor._id});
+            return surs;
         }else{
             this.stop();
             return;

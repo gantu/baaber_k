@@ -11,6 +11,10 @@ export const composer = ({context, clearErrors,permission_denied,_id}, onData) =
     if (Meteor.subscribe('_surveys.single',_id).ready()) {
     
       const record = Collections.surveys.findOne({_id:_id});
+      if(record.answerCount > 0){
+          Bert.alert('You can not edit Survey which have answers, Pleas contact administrator!','danger');
+          FlowRouter.go('/survey/list');
+      }
       onData(null, {record});
     }     
     //Bert.alert('You do not have permission!','danger');

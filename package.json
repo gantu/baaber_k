@@ -46,6 +46,7 @@
     "react-simple-di": "1.2.0",
     "react-slick": "^0.12.2",
     "react-tagsinput": "3.9.0",
+    "recharts": "^0.21.2",
     "tcomb-form": "0.9.7"
   },
   "private": true

@@ -5,6 +5,7 @@ export default React.createClass({
     
     saveAnswer(answers){
         console.log(answers);
+        this.props.saveSurveyAnswers(answers);
     },
     render(){
         const {record}=this.props;

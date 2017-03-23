@@ -6,6 +6,7 @@ import _images from './_images';
 import _companyTypes from './company_types';
 import _price_requests from './price_requests';
 import _surveys from './_surveys';
+import _answers from './_answers';
 
 export default function () {
   posts();
@@ -16,4 +17,5 @@ export default function () {
   _companyTypes();
   _price_requests();
   _surveys();
+  _answers();
 }

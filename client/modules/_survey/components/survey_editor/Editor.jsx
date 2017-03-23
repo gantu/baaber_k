@@ -131,7 +131,7 @@ export default React.createClass({
 
     if (this.props.answersCallback) {
       this.props.answersCallback({
-        _id: this.state._id,
+        survey_id: this.state._id,
         answers: this.state.answers
       });
     }

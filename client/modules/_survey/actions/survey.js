@@ -52,6 +52,16 @@ export default {
         });
     },
     
+    saveSurveyAnswers({Meteor, LocalState, FlowRouter},data){
+        Meteor.call('_surveys.saveAnswers',data,(err)=>{
+           if(err){
+                 Bert.alert('Cannot save your answers!','danger');
+            }else{
+                 Bert.alert('Answers are saved!','success');
+            } 
+        });
+    },
+    
 
    clearErrors({LocalState}) {
      return LocalState.set('SAVING_ERROR', null);

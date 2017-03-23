@@ -6,17 +6,19 @@ import newSurveyComposer from './composers/_new.jsx';
 import publicSurveyListComposer from './composers/public_survey/_collections.jsx';
 import publicSurveySingle from './composers/public_survey/_single.jsx';
 
+
 import NewSurvey from './components/new.jsx';
 import EditSurvey from './components/edit_survey.jsx';
 import Surveys from './components/list.jsx'
 import PublicSurveyList from './components/public_survey/_list.jsx';
 import PublicSurvey from './components/public_survey/_single.jsx';
-
+import DataVisView from './components/data_vis/wrapper.jsx';
 
 const NewView = newSurveyComposer(NewSurvey);
 const EditView = editSurveyComposer(EditSurvey);
 const PublicSurveyListView = publicSurveyListComposer(PublicSurveyList);
 const PublicSurveyView = publicSurveySingle(PublicSurvey);
+
 
 import {
   LayoutDefault,
@@ -55,6 +57,15 @@ FlowRouter.route('/survey/new', {
     action() {
       mount(LayoutDefaultCtx, {
         content: () => (<NewView />)
+      });
+    }
+  });
+    
+FlowRouter.route('/survey/answer/draw/:_id', {
+    name: '_survey.answerDraw',
+    action({_id}) {
+      mount(LayoutDefaultCtx, {
+        content: () => (<DataVisView _id={_id}/>)
       });
     }
   });

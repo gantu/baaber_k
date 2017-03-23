@@ -66,6 +66,7 @@ export default React.createClass({
              <th>Название </th>
              <th>Статус</th>
              <th>Дата </th>
+              <th>Collected Data</th>
              <th>Tool </th>
           </tr>
        </thead>
@@ -80,6 +81,9 @@ export default React.createClass({
               </td>
               <td>
                   {record.createdAt.toString()}
+              </td>
+              <td>
+                 <a href={`/survey/answer/draw/${record._id}`}> {record.answerCount}</a>
               </td>
               <td>
                   <a className="button" href={`/survey/edit/${record._id}`}><span className="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
