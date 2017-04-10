@@ -13,7 +13,11 @@ export default {
       if (err && err.reason) {
         return LocalState.set('LOGIN_ERROR', err.reason);
       }
-      FlowRouter.go('/account');
+      if(Roles.userIsInRole(Meteor.user(), ['manager'],'manager-group') || Roles.userIsInRole(Meteor.user(), ['operator'],'operator-group')){
+        FlowRouter.go('/survey/list');
+      }else{
+        FlowRouter.go('/account');
+      }
     });
 
   },

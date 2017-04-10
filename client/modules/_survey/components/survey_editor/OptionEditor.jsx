@@ -28,22 +28,22 @@ export default React.createClass({
             <div className="row">
                 <div className="col-md-6">
                   <div className="panel panel-default">
-                    <div className="panel-heading">Add option</div>
+                    <div className="panel-heading">Добавить вариант</div>
                     <div className="panel-body">
                       <div className="form-group">
-                        <label>Option name</label>
-                        <input type="text" className="form-control" placeholder="Option name" ref="option_name" />
+                        <label>Вариант ответа</label>
+                        <input type="text" className="form-control" placeholder="Вариант ответа" ref="option_name" />
                       </div>
                       <br />
-                      <button className="btn btn-default" onClick={this.addOption}>Add option</button>
+                      <button className="btn btn-default" onClick={this.addOption}>Добавить</button>
                     </div>
                   </div>
                 </div>
                 <div className="col-md-6">
                   <div className="panel panel-default">
-                    <div className="panel-heading">Current options</div>
+                    <div className="panel-heading">Сохраненные варианты</div>
                     <div className="panel-body">
-                      <p>Below are the current options for this question.<br/><b>You can delete options by clicking on them.</b></p>
+                      <p>Ниже приведены текущие варианты этого вопроса. <br/><b>Вы можете удалить параметры, нажав на них</b></p>
                       {options}
                     </div>
                   </div>

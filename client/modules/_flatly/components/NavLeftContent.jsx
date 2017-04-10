@@ -13,6 +13,8 @@ export default () => {
   links4.push({url: '/users', name: '/users'} );
   links4.push({url: '/users/add', name: '/users/add'} );
   links4.push({url: '/vendors/requests', name: 'Заявки'} );
+  links4.push({url: '/admin/vendors/list', name: 'Компании'} );
+    
   let navAdmin = React.createElement(DropDown, {name: 'Admin', links: links4});
 
   var links5 = [];
@@ -31,9 +33,9 @@ export default () => {
   let navVendors = React.createElement(DropDown, {name: 'Партнерство',links: links6});
 
   var links7=[];
-  links7.push({url: '/vendors/profile', name: 'Profile'} );
-  links7.push({url:'/survey/list', name: 'Surveys'});
-  let navManagers = React.createElement(DropDown,{name:'Managers',links:links7});
+  links7.push({url: '/vendors/profile', name: 'Профиль'} );
+  links7.push({url:'/survey/list', name: 'Управление опросами'});
+  let navManagers = React.createElement(DropDown,{name:'Личный кабинет',links:links7});
 
 
   /*
@@ -46,8 +48,6 @@ export default () => {
     <ul className="nav navbar-nav">
       {!Meteor.user() ? navVendors :null }
       { Roles.userIsInRole(Meteor.user(), ['admin'],'default-group') ? navAdmin : null }
-      { Roles.userIsInRole(Meteor.user(), ['manager'],'manager-group') ? <li><a href="/vendors/profile"><span className="glyphicon glyphicon-cog" aria-hidden="true"></span>Профиль</a></li> : null }
-      { Roles.userIsInRole(Meteor.user(), ['manager'],'manager-group') ? <li><a href="/price_request/list">Сообшения <span className="badge">42</span></a></li> : null }
       { Roles.userIsInRole(Meteor.user(), ['manager'],'manager-group') ? navManagers : null }
 
     </ul>

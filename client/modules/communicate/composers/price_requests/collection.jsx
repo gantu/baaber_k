@@ -10,7 +10,7 @@ export const collectionComposer = ({context,permission_denied}, onData) => {
     permission_denied();
   }else{
     if(Meteor.subscribe('_vendors.profileSingle',loggedIn._id).ready()){
-      let vendor=Collections.vendors.findOne({owner:loggedIn._id});
+      const vendor=Collections.vendors.findOne({"owner.id":loggedIn._id});
 
       if (Meteor.subscribe('_price_requests.List',vendor._id).ready()) {
         const collection = Collections.price_requests.find({vendorId:vendor._id}).fetch();
