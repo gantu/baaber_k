@@ -17,6 +17,8 @@ import _partiesModule from './modules/_parties';
 
 import _surveyModule from './modules/_survey';
 
+import _adminModule from './modules/_admin';
+
 // init context
 const context = initContext();
 
@@ -31,6 +33,7 @@ app.loadModule(_usersModule);
 app.loadModule(_partiesModule);
 app.loadModule(_surveyModule);
 //app.loadModule(_colorsModule);
+app.loadModule(_adminModule);
 
 
 

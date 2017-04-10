@@ -149,7 +149,7 @@ export default React.createClass({
       }
       if (this.props.editing) {
         parts.push(
-          <button className="btn btn-danger" onClick={this.removeQuestion.bind(this, question.id)}>Remove question</button>
+          <button className="btn btn-danger" onClick={this.removeQuestion.bind(this, question.id)}>Удалить </button>
         );
       }
       return parts;
@@ -171,29 +171,38 @@ export default React.createClass({
     else {
       return (
         <div>
-          <h3>Create survey</h3><hr />
+          <h3>Составить опрос</h3><hr/>
           <div className="row">
             <div className="col-md-9">
               <div className="form-group">
-                <label>Survey name</label>
-                <input type="text" className="form-control" placeholder="Survey name" value={this.state.name} onChange={this.nameChanged}/>
+                <label>Наименование опроса</label>
+                <input type="text" className="form-control" placeholder="Наименование опроса" value={this.state.name} onChange={this.nameChanged}/>
               </div>
               <div className="form-group">
-                <label>Survey description</label>
+                <label>Описание</label>
                 <textarea rows="3" onChange={this.descriptionChanged} className="form-control">{this.state.description}</textarea>
               </div>
             </div>
             <div className="col-md-3">
               <div className="panel panel-primary">
-                <div className="panel-heading">Create question</div>
+                <div className="panel-heading">Добавить вопросы</div>
                 <div className="panel-body">
                   <select className="form-control" ref="creation_type">
                     {keys(types).map(function(type) {
-                      return <option value={type}>{type}</option>;
+                      if(type === "text")
+                        return <option value={type}>Текст</option>;
+                      else if(type === "select")
+                        return <option value={type}>Раскрывающийся список</option>;
+                      else if(type === "radio")
+                        return <option value={type}>Один из списка</option>;
+                      else if(type === "checkbox")
+                        return <option value={type}>Несколько из списка</option>;
+                      else 
+                        return <option value={type}>абзац</option>;
                     })}
                   </select>
                   <br />
-                  <button className="btn btn-primary" onClick={this.createQuestion}>Create question</button>
+                  <button className="btn btn-primary" onClick={this.createQuestion}>Добавить</button>
                 </div>
               </div>
             </div>
@@ -201,7 +210,7 @@ export default React.createClass({
           {questions}
           {this.props.children}
           <br />
-          <button className="btn btn-success" onClick={this.submit}>Submit</button>
+          <button className="btn btn-success" onClick={this.submit}>Сохранить</button>
         </div>
       );
     }

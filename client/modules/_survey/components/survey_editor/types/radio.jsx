@@ -123,12 +123,12 @@ export default React.createClass({
         <div>
           <form>
             <div className="form-group">
-              <label>Question name</label>
-              <input type="text" className="form-control" placeholder="Question name" onChange={this.nameChanged} value={this.state.name}/>
+              <label>Вопрос</label>
+              <input type="text" className="form-control" placeholder="Вопрос" onChange={this.nameChanged} value={this.state.name}/>
             </div>
             <div className="form-group">
-              <label>Question description</label>
-              <input type="text" className="form-control" placeholder="Question description" onChange={this.descriptionChanged} value={this.state.description}/>
+              <label>Описание</label>
+              <input type="text" className="form-control" placeholder="Описание" onChange={this.descriptionChanged} value={this.state.description}/>
             </div>
           </form>
           <OptionEditor options={this.state.options} addCallback={this.addOption} removeCallback={this.removeOption} />

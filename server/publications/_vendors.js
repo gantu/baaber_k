@@ -2,6 +2,7 @@ import {vendorRequests,vendors} from '/lib/collections';
 import Restaurant from '/lib/restaurants';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
+import Vendor from '/lib/vendors';
 
 export default function (){
 
@@ -57,6 +58,23 @@ export default function (){
 
     return vendors.find(selector, options);
   });
+     
+    
+  Meteor.publish('_vendors.list_admin',function(){
+    const selector = {};
+    const options = {
+      fields: {_id: 1, companyName: 1,companyType:1},
+      limit: 10
+    };
+
+    return vendors.find(selector, options);
+  });
+
+  Meteor.publish('_vendors.single',function(_id){
+    check(_id,String);
+    return vendors.find({_id:_id});
+  });
+
 
   Meteor.publish('_vendors.publicProfileSingle',function(_id){
     check(_id,String);
