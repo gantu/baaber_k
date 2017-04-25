@@ -81,26 +81,25 @@ export default React.createClass({
                 {...sharedProps}
                 name="email"
                 value=""
-                label="Email"
+                label="адрес почты"
                 type="email"
-                placeholder="This is an email input."
+                
 
                 autoComplete="off"
 
                 validations="isEmail"
-                validationError="Please provide a valid email address."
+                validationError="Пожалуйста, представьте действующий адрес электронной почты."
 
             />
             <Input
                 {...sharedProps}
                 name="password"
                 value=""
-                label="Password"
+                label="пароль"
                 type="password"
-                placeholder="Type in your password"
 
                 validations="minLength:4"
-                validationError="That password looks a bit short, try again"
+                validationError="Этот пароль выглядит немного коротким, попробуйте еще раз."
 
             />
 
@@ -112,7 +111,7 @@ export default React.createClass({
               formNoValidate={true}
               disabled={!this.state.canSubmit}
               type="submit"
-              defaultValue="Login" />
+              defaultValue="Войти" />
           </Row>
 
         </Formsy.Form>

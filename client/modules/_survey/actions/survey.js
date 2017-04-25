@@ -34,7 +34,6 @@ export default {
     
     publishSurvey({Meteor,LocalState, FlowRouter},_id){
         Meteor.call('_surveys.publishSurvey',_id,Meteor.userId(),(err)=>{
-            console.log(_id);
             if(err){
                  Bert.alert('Cannot publish survey','danger');
             }else{
@@ -52,13 +51,14 @@ export default {
         });
     },
     
-    saveSurveyAnswers({Meteor, LocalState, FlowRouter},data){
+    saveSurveyAnswers({Meteor, LocalState, FlowRouter},data,record_id){
         Meteor.call('_surveys.saveAnswers',data,(err)=>{
            if(err){
                  Bert.alert('Cannot save your answers!','danger');
             }else{
                  Bert.alert('Answers are saved!','success');
-            } 
+            }
+            FlowRouter.go("/survey/public/list/"+record_id);
         });
     },
     

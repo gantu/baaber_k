@@ -4,14 +4,22 @@ import Editor from './survey_editor/Editor.jsx';
 import PublishOptions from './publish_options.jsx';
 
 const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
+ content: {
+        border: '1px solid #ccc',
+        borderRadius: '4px',
+        bottom: 'auto',
+        height:'80%',
+        minHeight: '10rem',
+        left: '50%',
+        padding: '2rem',
+        position: 'fixed',
+        right: 'auto',
+        top: '50%',
+        transform: 'translate(-50%,-50%)',
+        minWidth: '20rem',
+        width: '80%',
+        maxWidth: '60rem'
+      }
 };
 
 export default React.createClass({
@@ -119,8 +127,11 @@ export default React.createClass({
 			      onRequestClose={this.closeModal}
 			      style={customStyles}
 			      contentLabel="Example Modal">
+			      	  <button type="button" className="btn btn-danger" onClick={this.closeModal}>Close</button>
 			    	 
-			    	 {this.state.modalContent}
+			    	 <div className="container-fluid">
+			    	 	{this.state.modalContent}
+			    	 </div>
 			    </Modal>
 			        
 			</div>

@@ -22,7 +22,6 @@ export default class extends React.Component {
   getGuest() {
     return (
       <ul className="nav navbar-nav navbar-right">
-        <li><a href="/register">Регистрация</a></li>
         <li><a href="/login">Вход</a></li>
       </ul>
     );

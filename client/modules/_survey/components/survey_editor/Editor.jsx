@@ -158,8 +158,8 @@ export default React.createClass({
     if (!this.props.editing) {
       return (
         <div>
-          <h2>{this.state.name}</h2>
-          <h3>{this.state.description}</h3>
+          <h3>{this.state.name}</h3>
+          <h4>{this.state.description}</h4>
           
           <hr />
           {questions}
@@ -171,7 +171,7 @@ export default React.createClass({
     else {
       return (
         <div>
-          <h3>Составить опрос</h3><hr/>
+          <h4>Составить опрос</h4><hr/>
           <div className="row">
             <div className="col-md-9">
               <div className="form-group">

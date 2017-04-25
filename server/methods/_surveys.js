@@ -99,7 +99,6 @@ export default function(){
             }
         },
         '_surveys.saveAnswers'(data){
-            console.log(data);
             const pattern1 = {
               answer:String,
               question:String

@@ -115,8 +115,8 @@ export default React.createClass({
 
       return (
         <div>
-          <h3>{this.state.name}</h3>
-          <h4>{this.state.description}</h4>
+          <h4>{this.state.name}</h4>
+          <h5>{this.state.description}</h5>
           {options}
         </div>
       );

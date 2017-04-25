@@ -22,7 +22,6 @@ export default class extends React.Component {
       <div className="row">
         <div className="col-lg-4">
           <h2>Как это работает</h2>
-          <h3>Все очень просто:</h3>
           <p><strong>Шаг 1:</strong> Оставляете заявку на подключение</p>
           <p><strong>Шаг 2:</strong> Наш специалист быстро подключает вас</p>
           <p><strong>Шаг 3:</strong> Создаете ваш опрос и опубликовываете</p>

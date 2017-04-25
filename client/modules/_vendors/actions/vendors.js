@@ -3,11 +3,12 @@ export  default{
   addVendorRequest({Meteor, LocalState, FlowRouter},data){
     Meteor.call('_vendors.addVendorRequest', data, (err) => {
       if (err) {
-        return LocalState.set('_vendors.ACTION_VENDOR_ERROR', err.message);
+        Bert.alert('Вышла ошибка, мы не можем пока принять вашы заявку. Пожалуйста напишите наме на info@baaber.kg. Спасибо.','danger');
       }
-
+        Bert.alert('We accepted request, please wait for email. Спасибо.','success');
+        //FlowRouter.go('/vendors/requests/status');     
     });
-   FlowRouter.go(`/vendors/requests/status`);
+   
   },
 
   deleteVendorRequest({Meteor, LocalState, FlowRouter},_id){
@@ -25,7 +26,8 @@ export  default{
 
   permissionDenied({Meteor,FlowRouter,LocalState}){
     LocalState.set('_vendors.ACTION_VENDOR_ERROR', null);
-    FlowRouter.go(`/permission_denied`);
+    Bert.alert('You do not have permission!','danger');
+    FlowRouter.go('/');
   },
 
   registerVendor({Meteor,FlowRouter,LocalState},email, password1, password2,_token){
@@ -42,7 +44,7 @@ export  default{
       if (err) {
         return LocalState.set('_vendors.ACTION_VENDOR_ERROR', err.message);
       }else{
-        FlowRouter.go(`/login`);
+        FlowRouter.go('/login');
       }
     });
   },

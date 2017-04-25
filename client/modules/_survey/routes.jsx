@@ -80,7 +80,7 @@ FlowRouter.route('/survey/answer/draw/:_id', {
   });
     
 FlowRouter.route('/survey/public/list/:_id', {
-    name: 'left',
+    name: 'public_survey_list',
     action({_id}) {
       mount(LayoutSurveyCtx, {
         content: () => (<PublicSurveyListView _id={_id} />),
@@ -89,13 +89,11 @@ FlowRouter.route('/survey/public/list/:_id', {
   });
     
 FlowRouter.route('/survey/public/:_id', {
-    name: 'left',
+    name: 'public_survey',
     action({_id}) {
       mount(LayoutSurveyCtx, {
         content: () => (<PublicSurveyView _id={_id} />),
       });
     }
   });
-
-
 };

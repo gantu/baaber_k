@@ -23,20 +23,20 @@ export default function (injectDeps, {FlowRouter}) {
 
   const LayoutDefaultCtx = injectDeps(LayoutDefault);
 
-  FlowRouter.route('/register', {
-    name: 'users.register',
-    action() {
+  // FlowRouter.route('/register', {
+  //   name: 'users.register',
+  //   action() {
 
-      if (Meteor.userId()) {
-        FlowRouter.go('/profile');
-      }
+  //     if (Meteor.userId()) {
+  //       FlowRouter.go('/profile');
+  //     }
 
-      mount(LayoutDefaultCtx, {
-        content: () => (<Register />)
-      });
+  //     mount(LayoutDefaultCtx, {
+  //       content: () => (<Register />)
+  //     });
 
-    }
-  });
+  //   }
+  // });
 
   FlowRouter.route('/password', {
     name: 'users.password',

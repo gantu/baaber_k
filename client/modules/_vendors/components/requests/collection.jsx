@@ -1,8 +1,5 @@
 import React from 'react';
 import Sidebar from './_sidebar.jsx';
-
-
-// import Container from '../../containers/colors/collection.jsx';
 import dataComposer from '../../composers/requests/collection.jsx';
 import Component from './_collection.jsx';
 const Container = dataComposer(Component);

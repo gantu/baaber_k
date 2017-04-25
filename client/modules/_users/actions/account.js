@@ -46,9 +46,9 @@ export default {
 
   registerErrorClear({LocalState}) {
     return LocalState.set('REGISTER_ERROR', null);
-  },
+  }
 
-  socialLogin({Meteor, LocalState,FlowRouter},social_name){
+  /*socialLogin({Meteor, LocalState,FlowRouter},social_name){
 
     if(social_name == "google"){
       
@@ -72,6 +72,6 @@ export default {
             }
       });
     }
-  }
+  }*/
 
 };

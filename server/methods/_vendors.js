@@ -29,7 +29,7 @@ export default function () {
     '_vendors.approveVendorRequest'(_id){
       check(_id,String);
       var invited=vendorRequest.findOne(_id);
-
+      console.log(process.env.MAIL_URL);
       if(invited.status==="new"){
           invited.status="pending";
           invited.token=Random.hexString( 15 );
@@ -38,10 +38,10 @@ export default function () {
           SSR.compileTemplate( 'inviteEmail', Assets.getText( 'email/templates/invite.html' ) );
           Email.send({
             to: invited.email,
-            from: "info@toipoi.kg",
+            from: "info@baaber.kg",
             subject: "You are invited",
             html: SSR.render( 'inviteEmail', {
-              url: "http://192.168.43.38:3000/vendors/signup/" + invited.token
+              url: "http://212.42.119.24:3000/vendors/signup/" + invited.token
             })
           });
 

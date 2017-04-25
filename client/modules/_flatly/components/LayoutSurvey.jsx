@@ -7,7 +7,7 @@ export default class extends React.Component {
     return (
       <div>
         
-        <div className="container">
+        <div className="container-fluid">
 
             {this.props.content()}
 

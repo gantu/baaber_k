@@ -70,8 +70,8 @@ export default React.createClass({
     if (!this.props.editing) {
       return (
         <div>
-          <h3>{this.state.name}</h3>
-          <h4>{this.state.description}</h4>
+          <h4>{this.state.name}</h4>
+          <h5>{this.state.description}</h5>
           <textarea className="form-control" rows="3" onChange={this.answerChanged}>{this.state.answer}</textarea>
         </div>
       );

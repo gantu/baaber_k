@@ -4,13 +4,15 @@ import Editor from '../survey_editor/Editor.jsx';
 export default React.createClass({
     
     saveAnswer(answers){
-        console.log(answers);
-        this.props.saveSurveyAnswers(answers);
+     
+        this.props.saveSurveyAnswers(answers,this.props.record.author);
     },
     render(){
         const {record}=this.props;
         return(
-            <Editor editing={false} survey={record} answersCallback={this.saveAnswer} />
+        	<div className="coulmn">
+            	<Editor editing={false} survey={record} answersCallback={this.saveAnswer} />
+           </div>
         );
     }
 });

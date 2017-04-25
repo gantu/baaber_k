@@ -1,7 +1,5 @@
 import React from 'react';
 import Sidebar from './_sidebar_add.jsx';
-
-// import Container from '../../containers/colors/add.jsx';
 import dataComposer from '../../composers/requests/add.jsx';
 import Component from './_form.jsx';
 const Container = dataComposer(Component);

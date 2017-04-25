@@ -30,10 +30,6 @@ export default function (injectDeps, {FlowRouter,LocalState}) {
   FlowRouter.route('/vendors/requests/add', {
     name: '_vendors.addRequest',
     action() {
-      /*if(Session.get("_vendors.ADD_VENDOR_REQUEST_STATUS")=="done"){
-          FlowRouter.go(`/vendors/request_status`);
-      }*/
-
       mount(LayoutDefaultCtx, {
         content: () => (<VendorRequestAdd />)
       });
@@ -50,12 +46,8 @@ export default function (injectDeps, {FlowRouter,LocalState}) {
   });
 
   FlowRouter.route('/vendors/requests/status', {
-    name: '_vendors.request_status',
+    name: '_vendors.request._status',
     action() {
-      /*if(Session.get("_vendors.ADD_VENDOR_REQUEST_STATUS")!="done"){
-          FlowRouter.go(`/vendors/addRequest`);
-      }*/
-
       mount(LayoutDefaultCtx, {
         content: () => (<VendorRequestStatus />)
       });

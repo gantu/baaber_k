@@ -3,24 +3,15 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 import DrawChart from './draw_chart.jsx';
 
 export default React.createClass({
-    getInitialState(){
-        return {
-            data:[
-      {name: 'Мампар', uv: 4000},
-      {name: 'Манты', uv: 3000},
-      {name: 'Шорпо', uv: 2000},
-      {name: 'Лагман', uv: 2780}      ]
-        }
-    },
     render(){
-        const {returnObject}=this.props;
+        const {returnObject,answerCount}=this.props;
         return(
+            <div>
+            <p>Общее количество опрошенных людей: {answerCount}</p>
             <ul>
-                
-               {returnObject.map(record => (
+                {returnObject.map(record => (
                         
                     <li key={record._id}>
-                        
                         <DrawChart data={record} />
                     </li>
                     
@@ -28,6 +19,7 @@ export default React.createClass({
                     ))}
                    
             </ul>
+            </div>
         );
       
     }

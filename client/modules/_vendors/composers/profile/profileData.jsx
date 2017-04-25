@@ -10,7 +10,7 @@ export const profileDataComposer = ({context, clearErrors, permission_denied}, o
   const loggedIn = Meteor.user();
   let role = Roles.userIsInRole(loggedIn, ['manager'],'manager-group');
   if(!role){
-    Bert.alert('You do not have permission!','danger');
+    permission_denied();
   }else{
     if (VendorSubs.subscribe('_vendors.profileSingle', loggedIn._id).ready()) {
         const record = Collections.vendors.findOne({"owner.id":loggedIn._id});

@@ -10,6 +10,7 @@ export const composer = ({context, clearErrors,permission_denied,_id}, onData) =
   if (Meteor.subscribe('_surveys.single',_id).ready()) {
     
       const record = Collections.surveys.findOne({_id:_id});
+      const answerCount = record.answerCount;
       Meteor.call('_answers.getAggregateData',_id,(error,responce) => {
       if ( error ) {
         Bert.alert( error.reason );
@@ -27,7 +28,7 @@ export const composer = ({context, clearErrors,permission_denied,_id}, onData) =
             
         }
           
-          var returnObject=[];
+        var returnObject=[];
         for(var i=0;i<record.questions.length;i++){
             var simQuest={_id:i,q:record.questions[i].name,type:record.questions[i].type,a:[]};
             for(var j=0;j<responce.length;j++){
@@ -37,7 +38,8 @@ export const composer = ({context, clearErrors,permission_denied,_id}, onData) =
             returnObject.push(simQuest);
             
             }
-        onData(null, {returnObject});  
+
+        onData(null, {returnObject,answerCount});  
     }
   });
       
