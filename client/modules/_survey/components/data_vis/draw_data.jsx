@@ -8,10 +8,10 @@ export default React.createClass({
         return(
             <div>
             <p>Общее количество опрошенных людей: {answerCount}</p>
-            <ul>
+            <ul className="list-group">
                 {returnObject.map(record => (
                         
-                    <li key={record._id}>
+                    <li key={record._id} className="list-group-item">
                         <DrawChart data={record} />
                     </li>
                     

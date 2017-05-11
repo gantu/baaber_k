@@ -27,7 +27,7 @@ const app = createApp(context);
 app.loadModule(mainModule);
 app.loadModule(_vendorsModule);
 app.loadModule(communicateModule);
-app.loadModule(coreModule);
+//app.loadModule(coreModule);
 //app.loadModule(commentsModule);
 app.loadModule(_usersModule);
 app.loadModule(_partiesModule);

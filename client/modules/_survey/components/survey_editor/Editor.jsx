@@ -149,7 +149,7 @@ export default React.createClass({
       }
       if (this.props.editing) {
         parts.push(
-          <button className="btn btn-danger" onClick={this.removeQuestion.bind(this, question.id)}>Удалить </button>
+          <button className="btn btn-danger" onClick={this.removeQuestion.bind(this, question.id)}>Удалить</button>
         );
       }
       return parts;
@@ -180,7 +180,7 @@ export default React.createClass({
               </div>
               <div className="form-group">
                 <label>Описание</label>
-                <textarea rows="3" onChange={this.descriptionChanged} className="form-control">{this.state.description}</textarea>
+                <textarea rows="3" onChange={this.descriptionChanged} className="form-control" value={this.state.description}></textarea>
               </div>
             </div>
             <div className="col-md-3">

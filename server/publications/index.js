@@ -7,6 +7,7 @@ import _companyTypes from './company_types';
 import _price_requests from './price_requests';
 import _surveys from './_surveys';
 import _answers from './_answers';
+import _customers from './_customers';
 
 export default function () {
 
@@ -18,4 +19,5 @@ export default function () {
   _price_requests();
   _surveys();
   _answers();
+  _customers();
 }

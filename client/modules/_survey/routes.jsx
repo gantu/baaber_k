@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'react-mounter';
+import {mount,withOptions} from 'react-mounter';
 
 import editSurveyComposer from './composers/_single.jsx';
 import newSurveyComposer from './composers/_new.jsx';
@@ -13,6 +13,9 @@ import Surveys from './components/list.jsx'
 import PublicSurveyList from './components/public_survey/_list.jsx';
 import PublicSurvey from './components/public_survey/_single.jsx';
 import DataVisView from './components/data_vis/wrapper.jsx';
+import CustomerInfoListView from './components/customer_info/wrapper.jsx';
+
+import LayoutSurvey from './components/public_survey/LayoutSurvey.jsx';
 
 const NewView = newSurveyComposer(NewSurvey);
 const EditView = editSurveyComposer(EditSurvey);
@@ -20,13 +23,18 @@ const PublicSurveyListView = publicSurveyListComposer(PublicSurveyList);
 const PublicSurveyView = publicSurveySingle(PublicSurvey);
 
 
+
 import {
   LayoutDefault,
-  LayoutSurvey,
   Simple
 } from '/client/configs/theme.jsx';
 
 export default function (injectDeps, {FlowRouter}) {
+
+  const mount2 = withOptions({
+    rootId: 'the-root',
+    rootProps: {'className': 'container-fluid'}
+  }, mount);
 
   const LayoutDefaultCtx = injectDeps(LayoutDefault);
   const LayoutSurveyCtx = injectDeps(LayoutSurvey);
@@ -93,6 +101,18 @@ FlowRouter.route('/survey/public/:_id', {
     action({_id}) {
       mount(LayoutSurveyCtx, {
         content: () => (<PublicSurveyView _id={_id} />),
+      });
+    }
+  });
+
+FlowRouter.route('/survey/customer/list', {
+    name: 'survey_customer_list',
+    action() {
+      if (!Meteor.userId()) {
+        FlowRouter.go('/login');
+      }
+      mount(LayoutDefaultCtx, {
+        content: () => (<CustomerInfoListView />),
       });
     }
   });

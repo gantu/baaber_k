@@ -33,7 +33,7 @@ export default () => {
   let navVendors = React.createElement(DropDown, {name: 'Партнерство',links: links6});
 
   var links7=[];
-  links7.push({url: '/vendors/profile', name: 'Профиль'} );
+  //links7.push({url: '/vendors/profile', name: 'Профиль'} );
   links7.push({url:'/survey/list', name: 'Управление опросами'});
   let navManagers = React.createElement(DropDown,{name:'Личный кабинет',links:links7});
 

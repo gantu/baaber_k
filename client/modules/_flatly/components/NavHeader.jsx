@@ -9,6 +9,7 @@ export default React.createClass({
     return (
 
       <header className="main-header">
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <div className="navbar navbar-default navbar-fixed-top">
 
           <div className="container">

@@ -10,9 +10,9 @@ export default React.createClass({
     render(){
         const {record}=this.props;
         return(
-        	<div className="coulmn">
-            	<Editor editing={false} survey={record} answersCallback={this.saveAnswer} />
-           </div>
+        		
+        		<Editor  editing={false} survey={record} answersCallback={this.saveAnswer} />
+        		
         );
     }
 });

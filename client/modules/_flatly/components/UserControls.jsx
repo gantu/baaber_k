@@ -10,9 +10,8 @@ export default class extends React.Component {
           <a href="#" className="dropdown-toggle"
             data-toggle="dropdown">{user.profile.name} <span className="caret"></span></a>
           <ul className="dropdown-menu" role="menu">
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/account">Account</a></li>
-            <li><a href="/logout">Logout</a></li>
+            <li><a href="/vendors/profile">Профиль</a></li>
+            <li><a href="/logout">Выйти</a></li>
           </ul>
         </li>
       </ul>
