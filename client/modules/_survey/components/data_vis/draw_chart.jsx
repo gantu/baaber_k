@@ -12,10 +12,14 @@ export default React.createClass({
                 <div className="row">
                     <h2>{data.q}</h2>
                     <div className="col-md-9">
-                        <PieChart width={800} height={400}>
-                            <Pie isAnimationActive={false} data={data.a} cx={200} cy={200} outerRadius={130} fill="#008000" label/>
-                            <Tooltip/>
-                        </PieChart> 
+                            <BarChart width={600} height={300} data={data.a} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                                <XAxis dataKey="name"/>
+                                <YAxis/>
+                                <CartesianGrid strokeDasharray="3 3"/>
+                                <Tooltip/>
+                                <Legend />
+                                <Bar dataKey="value" fill="#8884d8" />
+                            </BarChart>
                     </div>
                     <div className="col-md-3">
                         {data.a.map(record => (

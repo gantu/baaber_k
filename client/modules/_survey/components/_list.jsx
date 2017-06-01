@@ -54,8 +54,7 @@ export default React.createClass({
     	this.setState({modalIsOpen:true,modalContent:<PublishOptions _id={_id} saveAction={this.publishSurvey} status={status} />})
 	},
 
-	publishSurvey(_id,event){
-		event.preventDefault();
+	publishSurvey(_id){
 		this.props.publishSurvey(_id);
 	},
 	unPublishSurvey(_id){

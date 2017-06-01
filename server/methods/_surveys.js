@@ -83,7 +83,6 @@ export default function(){
         '_surveys.publishSurvey'(_id, userId){
             check(_id,String);
             check(userId,String);
-            console.log(_id+" "+userId);
             if(Roles.userIsInRole(userId, ['manager'],'manager-group') ||Roles.userIsInRole(this.userId, ['operator'],'operator-group') ){
                 var survey=Survey.findOne(_id);
                 survey.isPublished=true;

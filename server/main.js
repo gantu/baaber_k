@@ -10,4 +10,4 @@ methods();
 addInitialData();
 addInitialUser();
 //configure();
-kadira();
+//kadira();
