@@ -29,6 +29,7 @@
     "jsdom": "9.x.x"
   },
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "classnames": "2.2.5",
     "domready": "^1.0.8",
     "formsy-react": "0.18.0",

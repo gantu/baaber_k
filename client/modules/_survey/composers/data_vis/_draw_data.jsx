@@ -11,6 +11,7 @@ export const composer = ({context, clearErrors,permission_denied,_id}, onData) =
     
       const record = Collections.surveys.findOne({_id:_id});
       const answerCount = record.answerCount;
+
       Meteor.call('_answers.getAggregateData',_id,(error,responce) => {
       if ( error ) {
         Bert.alert( error.reason );
