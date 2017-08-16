@@ -3,7 +3,7 @@ import {check} from 'meteor/check';
 import Survey from '/lib/surveys';
 import Vendor  from '/lib/vendors';
 import Answer from '/lib/answers';
-import {answers} from '/lib/collections';
+import {answers,surveys} from '/lib/collections';
 import Customers from '/lib/customer_info';
 
 
@@ -118,7 +118,6 @@ export default function(){
             answer.answers = data.answers;
             answer.save();
             */
-            
             answers.insert(data);
             
             var survey = Survey.findOne(data.survey_id);

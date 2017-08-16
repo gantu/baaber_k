@@ -50,7 +50,7 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
-    
+
  FlowRouter.route('/survey/edit/:_id', {
     name: '_survey.editView',
     action({_id}) {
@@ -62,7 +62,7 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
- 
+
 FlowRouter.route('/survey/new', {
     name: '_survey.newView',
     action() {
@@ -74,7 +74,21 @@ FlowRouter.route('/survey/new', {
       });
     }
   });
-    
+
+// FlowRouter.route('/survey/answer/draw/:_id', {
+//     name: '_survey.answerDraw',
+//     action({_id}) {
+//       if (!Meteor.userId()) {
+//         FlowRouter.go('/login');
+//       }
+//        var filter=FlowRouter.getQueryParam("filter");
+//         console.log(filter);
+//       mount(LayoutDefaultCtx, {
+//
+//         content: () => (<DataVisView _id={_id} filter={filter}/>)
+//       });
+//     }
+//   });
 FlowRouter.route('/survey/answer/draw/:_id', {
     name: '_survey.answerDraw',
     action({_id}) {
@@ -86,7 +100,7 @@ FlowRouter.route('/survey/answer/draw/:_id', {
       });
     }
   });
-    
+
 FlowRouter.route('/survey/public/list/:_id', {
     name: 'public_survey_list',
     action({_id}) {
@@ -95,7 +109,7 @@ FlowRouter.route('/survey/public/list/:_id', {
       });
     }
   });
-    
+
 FlowRouter.route('/survey/public/:_id', {
     name: 'public_survey',
     action({_id}) {

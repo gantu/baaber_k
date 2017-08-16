@@ -23,14 +23,14 @@ const customStyles = {
 };
 
 export default React.createClass({
-    
+
 	getInitialState(){
         return{
             modalIsOpen:false,
             modalContent:null
         };
     },
-    
+
     openModal() {
     	this.setState({modalIsOpen: true});
   	},
@@ -43,12 +43,12 @@ export default React.createClass({
   	closeModal() {
     	this.setState({modalIsOpen: false});
   	},
-    
+
   	deleteSurvey(_id){
         //event.preventDefault();
   		this.props.deleteSurvey(_id);
   	},
-    
+
 	showPublishSurvey(_id,status,event){
     	event.preventDefault();
     	this.setState({modalIsOpen:true,modalContent:<PublishOptions _id={_id} saveAction={this.publishSurvey} status={status} />})
@@ -69,7 +69,7 @@ export default React.createClass({
 
 	render(){
 		const {collection} = this.props;
-                             
+
 		return(
 
 			<div>
@@ -112,7 +112,7 @@ export default React.createClass({
 					          	<td className="text-center">
 					           		<a className="button" href="#" onClick={() => {if(confirm('Unpublish Survey?')) {this.unPublishSurvey(record._id)};}}><span className="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 					          	</td>
-					          	<td className="text-center">  	
+					          	<td className="text-center">
 					            	<a className="button" href="#" onClick={this.previewSurvey.bind(this,record)}><span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
 					          	</td>
 					        </tr>
@@ -127,14 +127,14 @@ export default React.createClass({
 			      style={customStyles}
 			      contentLabel="Example Modal">
 			      	  <button type="button" className="btn btn-danger" onClick={this.closeModal}>Close</button>
-			    	 
+
 			    	 <div className="container-fluid">
 			    	 	{this.state.modalContent}
 			    	 </div>
 			    </Modal>
-			        
+
 			</div>
 
-		);   
-	} 
+		);
+	}
 });

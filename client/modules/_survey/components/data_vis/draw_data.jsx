@@ -1,28 +1,49 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import DrawChart from './draw_chart.jsx';
+import GraphFilter from './graph_filter.jsx';
 
 export default React.createClass({
+
+    getInitialState(){
+      return {
+        responce:this.props.responce,
+        survey:this.props.survey,
+        answerCount:this.props.answerCount
+      };
+    },
+    applyFilter(filter){
+        this.props.applyFilter(this.state.survey._id,filter);
+      //  this.setState({data:this.props.graph_data});
+    },
+    componentWillReceiveProps(nextProps) {
+      this.setState({
+        responce: nextProps.graph_data
+      });
+    },
     render(){
-        const {returnObject,answerCount}=this.props;
         return(
             <div>
-            <p>Общее количество опрошенных людей: {answerCount}</p>
-            <ul className="list-group">
-                {returnObject.map(record => (
-                        
-                    <li key={record._id} className="list-group-item">
-                        <DrawChart data={record} />
-                    </li>
-                    
-                
+                <div className="col-md-9">
+                <p>Общее количество опрошенных людей: {this.state.answerCount}</p>
+                <ul className="list-group">
+                    {this.state.responce.map(record => (
+
+                        <li key={record._id.seq} className="list-group-item">
+                            <DrawChart data={record} />
+                        </li>
+
+
                     ))}
-                   
-            </ul>
+
+                </ul>
+                </div>
+                <div className="col-md-3">
+                    <GraphFilter survey={this.state.survey} applyFilter={this.applyFilter}/>
+                </div>
             </div>
         );
-      
+
     }
-    
-    
+
+
 });
