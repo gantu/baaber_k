@@ -12,14 +12,16 @@ export default React.createClass({
       };
     },
     applyFilter(filter){
+       
         this.props.applyFilter(this.state.survey._id,filter);
-      //  this.setState({data:this.props.graph_data});
+        //  this.setState({data:this.props.graph_data});
     },
     componentWillReceiveProps(nextProps) {
       this.setState({
         responce: nextProps.graph_data
       });
     },
+
     render(){
         return(
             <div>
@@ -31,14 +33,14 @@ export default React.createClass({
                         <li key={record._id.seq} className="list-group-item">
                             <DrawChart data={record} />
                         </li>
-
-
-                    ))}
-
+                  ))}
                 </ul>
                 </div>
+
                 <div className="col-md-3">
-                    <GraphFilter survey={this.state.survey} applyFilter={this.applyFilter}/>
+                    
+                        <GraphFilter survey={this.state.survey} applyFilter={this.applyFilter}/>
+
                 </div>
             </div>
         );

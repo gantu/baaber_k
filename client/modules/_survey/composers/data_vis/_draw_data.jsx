@@ -8,7 +8,7 @@ export const composer = ({context, clearErrors,permission_denied,_id,filter}, on
   const loggedIn = Meteor.user();
 
   const graph_data = LocalState.get('GRAPH_DATA');
-  if(typeof graph_data!== "undefined"){
+  if(graph_data){
     onData(null,{graph_data});
   }else{
 
@@ -25,7 +25,6 @@ export const composer = ({context, clearErrors,permission_denied,_id,filter}, on
             for(var i=0;i<responce.length;i++){
               responce[i]._id.seq=i;
             }
-
             onData(null, {responce,answerCount,survey});
 
         }

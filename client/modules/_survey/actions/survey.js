@@ -83,7 +83,7 @@ export default {
 
 
    clearErrors({LocalState}) {
-     //LocalState.set('GRAPH_DATA',null);
+     LocalState.set('GRAPH_DATA',null);
      return LocalState.set('SAVING_ERROR', null);
 
    },
