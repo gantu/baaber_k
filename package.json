@@ -39,6 +39,7 @@
     "lodash": "^4.13.1",
     "mantra-core": "^1.7.0",
     "meteor-node-stubs": "^0.2.3",
+    "papaparse": "^4.3.6",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-komposer": "1.11.0",

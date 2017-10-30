@@ -1,6 +1,7 @@
 import React from 'react';
 import DrawChart from './draw_chart.jsx';
 import GraphFilter from './graph_filter.jsx';
+import Tools from './tools.jsx';
 
 export default React.createClass({
 
@@ -38,9 +39,12 @@ export default React.createClass({
                 </div>
 
                 <div className="col-md-3">
-                    
+                    <div className="row">
                         <GraphFilter survey={this.state.survey} applyFilter={this.applyFilter}/>
-
+                    </div>
+                    <div className="row">
+                        <Tools />
+                    </div>    
                 </div>
             </div>
         );

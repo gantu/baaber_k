@@ -51,7 +51,8 @@ export default React.createClass({
       <div className="panel panel-default">
         <div className="panel-heading">Составить фильтр</div>
         <div className="panel-body">
-            <select className="form-control input-sm" ref="filter-type" onChange={this.valueChange}>
+          <div className="form-group">
+            <select className="form-control selectpicker" ref="filter-type" onChange={this.valueChange}>
               {survey.questions.map(question => (
                 <option id={question.id} value={question.id}>{question.name}</option>
               ))}
@@ -61,15 +62,16 @@ export default React.createClass({
               {this.state.question.options.map(option => (
                 <li key={option.id}>
 
-                  <input type="checkbox" name={option.id} value={option.id} onChange={this.onChecked.bind(this, option.id)} isChecked={this.isChecked(option.id)}/>
+                  <input className="form-check-input" type="checkbox" name={option.id} value={option.id} onChange={this.onChecked.bind(this, option.id)} isChecked={this.isChecked(option.id)}/>
                   <label for={option.id} className="checkbox-inline">{option.name}</label>
 
                 </li>
               ))}</ul>}
-            <button type="button" onClick={this.applyFilter} className="btn-success">
+            <button type="button" onClick={this.applyFilter} className="btn btn-success">
               Применить</button>
-            <button type="button" onClick={this.clearFilter} className="btn-danger">
+            <button type="button" onClick={this.clearFilter} className="btn btn-danger">
               Очистить</button>
+          </div>
         </div>
       </div>
 

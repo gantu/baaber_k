@@ -81,6 +81,7 @@ export default React.createClass({
 				        	<th>Название </th>
 				         	<th>Статус</th>
 				         	<th>Изменен</th>
+				         	<th>Ответы</th>
 				         	<th>Анализ</th>
 				         	<th>Редактировать</th>
 				         	<th>Опубликовать</th>
@@ -100,8 +101,11 @@ export default React.createClass({
 				          		<td className="text-center">
 				              		{record.lastModified.toISOString().slice(0, 10)}
 				          		</td>
+				          		<td>
+				          			{record.answerCount}
+				          		</td>
 					          	<td className="text-center">
-					            	<a href={`/survey/answer/draw/${record._id}`}> {record.answerCount}</a>
+					            	<a href={`/survey/answer/draw/${record._id}`}> <span className="glyphicon glyphicon-stats" aria-hidden="true"></span></a>
 					          	</td>
 					          	<td className="text-center">
 					          		<a className="button" href={`/survey/edit/${record._id}`}><span className="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
