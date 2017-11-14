@@ -43,7 +43,7 @@ export default React.createClass({
                         <GraphFilter survey={this.state.survey} applyFilter={this.applyFilter}/>
                     </div>
                     <div className="row">
-                        <Tools />
+                        <Tools data={this.state.responce}/>
                     </div>    
                 </div>
             </div>
